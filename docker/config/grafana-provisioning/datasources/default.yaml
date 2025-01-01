@@ -1,0 +1,34 @@
+apiVersion: 1
+datasources:
+  - name: prometheus
+    uid: myprometheus
+    type: prometheus
+    url: http://prometheus:9090
+
+  - name: tempo
+    uid: mytempo
+    type: tempo
+    url: http://tempo:3200
+    jsonData:
+      serviceMap:
+        datasourceUid: myprometheus
+      nodeGraph:
+        enabled: true
+      lokiSearch:
+        datasourceUid: myloki
+
+  - name: loki
+    uid: myloki
+    type: loki
+    url: http://loki:3100
+    jsonData:
+      derivedFields:
+        - name: "traceID explore"
+          matcherRegex: "((?<=traceid\":\")[A-Za-z0-9]+)"
+          url: "$${__value.raw}"
+          datasourceUid: mytempo
+        - name: "traceID"
+          matcherRegex: "((?<=TR_)[A-Za-z0-9]+)"
+          url: "$${__value.raw}"
+          datasourceUid: mytempo
+

@@ -1,0 +1,133 @@
+# #############################################################
+# RECEIVERS
+# #############################################################
+receivers:
+  otlp:
+    protocols:
+      http:
+        endpoint: :10001
+
+  postgresql:
+    endpoint: postgres:5432
+    transport: tcp
+    username: jack
+    password: secret
+    databases:
+      - jack
+    collection_interval: 30s
+    tls:
+      insecure: true
+      insecure_skip_verify: true
+
+# #############################################################
+# PROCESSORS
+# #############################################################
+processors:
+  memory_limiter:
+    # 80% of maximum memory up to 2G
+    limit_mib: 1500
+    # 25% of limit up to 2G
+    spike_limit_mib: 512
+    check_interval: 5s
+
+  metricstransform:
+  # transforms is a list of transformations with each element transforming a metric selected by metric name
+    transforms:
+      - include: calls_total
+        action: update
+        new_name: traces_spanmetrics_calls_total
+
+  resource/loki:
+    attributes:
+      - action: insert
+        key: application
+        from_attribute: service.name
+
+  attributes/loki:
+    actions:
+      - action: insert
+        key: loki.resource.labels
+        value: application
+
+# #############################################################
+# EXPORTERS
+# #############################################################
+exporters:
+  prometheus:
+    endpoint: "0.0.0.0:10003"
+    const_labels:
+      context: otel-workshop
+    enable_open_metrics: true
+    resource_to_telemetry_conversion:
+      enabled: true
+  loki:
+    endpoint: "http://loki:3100/loki/api/v1/push"
+  otlp:
+    endpoint: "http://tempo:4317"
+    tls:
+      insecure: true
+
+# #############################################################
+# EXTENSIONS
+# #############################################################
+extensions:
+  health_check:
+
+# #############################################################
+# CONNECTORS
+# #############################################################
+connectors:
+  spanmetrics:
+    histogram:
+      explicit:
+        buckets: [100us, 1ms, 2ms, 6ms, 10ms, 100ms, 250ms]
+    dimensions:
+      - name: http.method
+      - name: http.status_code
+      - name: http.route
+      - name: code.function
+      - name: code.namespace
+      - name: db.name
+      - name: db.http_route
+      - name: db.sql.table
+      - name: otel.library.version
+    dimensions_cache_size: 1000
+    aggregation_temporality: "AGGREGATION_TEMPORALITY_CUMULATIVE"
+    metrics_flush_interval: 15s
+
+  servicegraph:
+    latency_histogram_buckets: [100us, 1ms, 2ms, 6ms, 10ms, 100ms, 250ms]
+    store:
+      ttl: 1s
+      max_items: 10
+
+# #############################################################
+# SERVICE
+# #############################################################
+service:
+  extensions: [health_check]
+  telemetry:
+    metrics:
+      level: basic
+      address: :10002
+  pipelines:
+    metrics:
+      receivers: [otlp, postgresql]
+      processors: [memory_limiter]
+      exporters: [prometheus]
+    metrics/spanmetrics:
+      receivers: [spanmetrics, servicegraph]
+      processors: [memory_limiter, metricstransform]
+      exporters: [prometheus]
+    logs:
+      receivers: [otlp]
+      processors: [memory_limiter, resource/loki, attributes/loki]
+      exporters: [loki]
+    traces:
+      receivers: [otlp]
+      processors: [memory_limiter]
+      exporters: [otlp]
+    traces/spanmetrics:
+      receivers: [otlp]
+      exporters: [spanmetrics,servicegraph]
+
