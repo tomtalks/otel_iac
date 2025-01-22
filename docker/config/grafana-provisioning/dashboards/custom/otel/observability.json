@@ -1,4 +1,81 @@
 {
+  "__inputs": [
+    {
+      "name": "DS_PROMETHEUS",
+      "label": "prometheus",
+      "description": "",
+      "type": "datasource",
+      "pluginId": "prometheus",
+      "pluginName": "Prometheus"
+    },
+    {
+      "name": "DS_LOKI",
+      "label": "loki",
+      "description": "",
+      "type": "datasource",
+      "pluginId": "loki",
+      "pluginName": "Loki"
+    },
+    {
+      "name": "DS_TEMPO",
+      "label": "tempo",
+      "description": "",
+      "type": "datasource",
+      "pluginId": "tempo",
+      "pluginName": "Tempo"
+    }
+  ],
+  "__elements": {},
+  "__requires": [
+    {
+      "type": "panel",
+      "id": "bargauge",
+      "name": "Bar gauge",
+      "version": ""
+    },
+    {
+      "type": "grafana",
+      "id": "grafana",
+      "name": "Grafana",
+      "version": "11.4.0"
+    },
+    {
+      "type": "panel",
+      "id": "logs",
+      "name": "Logs",
+      "version": ""
+    },
+    {
+      "type": "datasource",
+      "id": "loki",
+      "name": "Loki",
+      "version": "1.0.0"
+    },
+    {
+      "type": "datasource",
+      "id": "prometheus",
+      "name": "Prometheus",
+      "version": "1.0.0"
+    },
+    {
+      "type": "panel",
+      "id": "stat",
+      "name": "Stat",
+      "version": ""
+    },
+    {
+      "type": "panel",
+      "id": "table",
+      "name": "Table",
+      "version": ""
+    },
+    {
+      "type": "datasource",
+      "id": "tempo",
+      "name": "Tempo",
+      "version": "11.3.1"
+    }
+  ],
   "annotations": {
     "list": [
       {
@@ -25,7 +102,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 8,
+  "id": null,
   "links": [],
   "panels": [
     {
@@ -44,7 +121,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "myprometheus"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -91,7 +168,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "myprometheus"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "exemplar": true,
@@ -108,7 +185,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "myprometheus"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -159,7 +236,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "myprometheus"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "exemplar": true,
@@ -176,7 +253,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "myprometheus"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -231,7 +308,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "myprometheus"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "exemplar": true,
@@ -248,7 +325,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "myprometheus"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -303,7 +380,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "myprometheus"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "exemplar": true,
@@ -320,7 +397,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "myprometheus"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -375,7 +452,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "myprometheus"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "exemplar": true,
@@ -392,7 +469,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "myprometheus"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -453,7 +530,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "myprometheus"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "exemplar": true,
@@ -470,7 +547,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "myprometheus"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -528,7 +605,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "myprometheus"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "exemplar": true,
@@ -545,7 +622,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "myprometheus"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -607,7 +684,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "myprometheus"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "exemplar": true,
@@ -624,7 +701,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "myprometheus"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -686,7 +763,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "myprometheus"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "exemplar": true,
@@ -716,11 +793,7 @@
     {
       "datasource": {
         "type": "loki",
-        "uid": "myloki"
-      },
-      "fieldConfig": {
-        "defaults": {},
-        "overrides": []
+        "uid": "${DS_LOKI}"
       },
       "gridPos": {
         "h": 8,
@@ -744,7 +817,7 @@
         {
           "datasource": {
             "type": "loki",
-            "uid": "myloki"
+            "uid": "${DS_LOKI}"
           },
           "editorMode": "code",
           "expr": "{application=\"$app_name\"} | json | line_format \"{{.severity}}\\t{{.body}}\"",
@@ -759,7 +832,110 @@
     {
       "datasource": {
         "type": "tempo",
-        "uid": "mytempo"
+        "uid": "${DS_TEMPO}"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 22,
+        "x": 0,
+        "y": 31
+      },
+      "id": 38,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "showHeader": true
+      },
+      "pluginVersion": "11.4.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "tempo",
+            "uid": "${DS_TEMPO}"
+          },
+          "filters": [
+            {
+              "id": "1434943b",
+              "operator": "!=",
+              "scope": "span",
+              "tag": "http.response.status_code",
+              "value": [
+                "200"
+              ],
+              "valueType": "int"
+            },
+            {
+              "id": "status",
+              "operator": "=",
+              "scope": "intrinsic",
+              "tag": "status",
+              "valueType": "keyword"
+            },
+            {
+              "id": "span-name",
+              "operator": "=",
+              "scope": "span",
+              "tag": "name",
+              "value": [],
+              "valueType": "string"
+            }
+          ],
+          "groupBy": [
+            {
+              "id": "97de1b50",
+              "scope": "span"
+            }
+          ],
+          "limit": 20,
+          "query": "{span.http.response.status_code!=200}",
+          "queryType": "traceql",
+          "refId": "A",
+          "tableType": "traces"
+        }
+      ],
+      "title": "Error traces",
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "tempo",
+        "uid": "${DS_TEMPO}"
       },
       "fieldConfig": {
         "defaults": {
@@ -794,7 +970,7 @@
         "h": 26,
         "w": 24,
         "x": 0,
-        "y": 31
+        "y": 40
       },
       "id": 26,
       "options": {
@@ -814,13 +990,15 @@
         {
           "datasource": {
             "type": "tempo",
-            "uid": "mytempo"
+            "uid": "${DS_TEMPO}"
           },
           "filters": [
             {
               "id": "5578df66",
               "operator": "=",
-              "scope": "span"
+              "scope": "span",
+              "value": [],
+              "valueType": "int"
             },
             {
               "id": "span-name",
@@ -859,29 +1037,25 @@
       "type": "table"
     }
   ],
-  "preload": false,
   "refresh": "",
   "schemaVersion": 40,
   "tags": [],
   "templating": {
     "list": [
       {
-        "current": {
-          "text": "lumbercamp",
-          "value": "lumbercamp"
-        },
+        "current": {},
         "datasource": {
           "type": "prometheus",
-          "uid": "myprometheus"
+          "uid": "${DS_PROMETHEUS}"
         },
-        "definition": "label_values(jvm_cpu_count,service_name)",
+        "definition": "label_values(http_server_request_duration_seconds_sum,service_name)",
         "includeAll": false,
         "label": "Application Name",
         "name": "app_name",
         "options": [],
         "query": {
           "qryType": 1,
-          "query": "label_values(jvm_cpu_count,service_name)",
+          "query": "label_values(http_server_request_duration_seconds_sum,service_name)",
           "refId": "PrometheusVariableQueryEditor-VariableQuery"
         },
         "refresh": 1,
@@ -907,13 +1081,10 @@
         "type": "textbox"
       },
       {
-        "current": {
-          "text": "server",
-          "value": "server"
-        },
+        "current": {},
         "datasource": {
           "type": "tempo",
-          "uid": "mytempo"
+          "uid": "${DS_TEMPO}"
         },
         "definition": "",
         "description": "",
@@ -939,6 +1110,6 @@
   "timezone": "",
   "title": "Observability Sample",
   "uid": "aeap3x0fe720wf",
-  "version": 5,
+  "version": 16,
   "weekStart": ""
 }

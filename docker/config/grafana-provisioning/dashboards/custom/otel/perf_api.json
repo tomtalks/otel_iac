@@ -1,4 +1,47 @@
 {
+  "__inputs": [
+    {
+      "name": "DS_PROMETHEUS",
+      "label": "prometheus",
+      "description": "",
+      "type": "datasource",
+      "pluginId": "prometheus",
+      "pluginName": "Prometheus"
+    }
+  ],
+  "__elements": {},
+  "__requires": [
+    {
+      "type": "panel",
+      "id": "bargauge",
+      "name": "Bar gauge",
+      "version": ""
+    },
+    {
+      "type": "grafana",
+      "id": "grafana",
+      "name": "Grafana",
+      "version": "11.4.0"
+    },
+    {
+      "type": "panel",
+      "id": "piechart",
+      "name": "Pie chart",
+      "version": ""
+    },
+    {
+      "type": "datasource",
+      "id": "prometheus",
+      "name": "Prometheus",
+      "version": "1.0.0"
+    },
+    {
+      "type": "panel",
+      "id": "stat",
+      "name": "Stat",
+      "version": ""
+    }
+  ],
   "annotations": {
     "list": [
       {
@@ -25,13 +68,13 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 9,
+  "id": null,
   "links": [],
   "panels": [
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "myprometheus"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -84,7 +127,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "myprometheus"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -102,7 +145,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "myprometheus"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -153,7 +196,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "myprometheus"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "exemplar": true,
@@ -170,7 +213,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "myprometheus"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -222,7 +265,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "myprometheus"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "exemplar": true,
@@ -239,7 +282,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "myprometheus"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -294,7 +337,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "myprometheus"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "exemplar": true,
@@ -311,7 +354,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "myprometheus"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -366,7 +409,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "myprometheus"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "exemplar": true,
@@ -383,7 +426,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "myprometheus"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -438,7 +481,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "myprometheus"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "exemplar": true,
@@ -455,7 +498,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "myprometheus"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -513,7 +556,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "myprometheus"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "exemplar": true,
@@ -530,7 +573,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "myprometheus"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -588,7 +631,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "myprometheus"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "exemplar": true,
@@ -605,7 +648,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "myprometheus"
+        "uid": "${DS_PROMETHEUS}"
       },
       "fieldConfig": {
         "defaults": {
@@ -663,7 +706,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "myprometheus"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "exemplar": false,
@@ -681,7 +724,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "myprometheus"
+        "uid": "${DS_PROMETHEUS}"
       },
       "description": "",
       "fieldConfig": {
@@ -743,7 +786,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "myprometheus"
+            "uid": "${DS_PROMETHEUS}"
           },
           "editorMode": "code",
           "exemplar": true,
@@ -758,20 +801,16 @@
       "type": "bargauge"
     }
   ],
-  "preload": false,
   "refresh": "30s",
   "schemaVersion": 40,
   "tags": [],
   "templating": {
     "list": [
       {
-        "current": {
-          "text": "lumbercamp",
-          "value": "lumbercamp"
-        },
+        "current": {},
         "datasource": {
           "type": "prometheus",
-          "uid": "myprometheus"
+          "uid": "${DS_PROMETHEUS}"
         },
         "definition": "label_values(http_server_request_duration_seconds_count{http_route!=\"\"}, service_name)",
         "includeAll": false,
@@ -787,17 +826,10 @@
         "type": "query"
       },
       {
-        "current": {
-          "text": [
-            "All"
-          ],
-          "value": [
-            "$__all"
-          ]
-        },
+        "current": {},
         "datasource": {
           "type": "prometheus",
-          "uid": "myprometheus"
+          "uid": "${DS_PROMETHEUS}"
         },
         "definition": "label_values(http_server_request_duration_seconds_count{service_name=\"$app_name\", http_route!=\"\"}, http_route)",
         "includeAll": true,
@@ -822,7 +854,7 @@
   "timepicker": {},
   "timezone": "",
   "title": "Perf API Copy",
-  "uid": "feap3xv992ww0e",
-  "version": 5,
+  "uid": "bear6lw5niwhse",
+  "version": 2,
   "weekStart": ""
 }

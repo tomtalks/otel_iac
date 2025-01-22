@@ -81,7 +81,7 @@ services:
       - ./config/grafana-provisioning:/etc/grafana/provisioning
       - grafana_data:/var/lib/grafana
     environment:
-      GF_AUTH_ANONYMOUS_ENABLED: "true"
+      GF_AUTH_ANONYMOUS_ENABLED: "false"
       GF_AUTH_ANONYMOUS_ORG_ROLE: Admin
       GF_AUTH_DISABLE_LOGIN_FORM: "false"
       GF_PATHS_PROVISIONING: "/etc/grafana/provisioning"
