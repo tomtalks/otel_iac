@@ -25,7 +25,7 @@
   "editable": true,
   "fiscalYearStartMonth": 0,
   "graphTooltip": 0,
-  "id": 2,
+  "id": 8,
   "links": [],
   "panels": [
     {
@@ -611,7 +611,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "duration_count{service_name=\"$app_name\", http_status_code=~\"2.*\", span_kind=~\"$span_kind\", http_route!~\"$url_filter_regex\"}",
+          "expr": "http_server_request_duration_seconds_sum{service_name=\"$app_name\", http_response_status_code=~\"2.*\", http_route!~\"$url_filter_regex\"}",
           "interval": "",
           "legendFormat": "{{http_route}}",
           "range": true,
@@ -690,7 +690,7 @@
           },
           "editorMode": "code",
           "exemplar": true,
-          "expr": "duration_count{service_name=\"$app_name\", http_status_code!~\"2.*\", span_kind=~\"$span_kind\", http_route!~\"$url_filter_regex\"}",
+          "expr": "http_server_request_duration_seconds_sum{service_name=\"$app_name\", http_response_status_code!~\"2.*\", http_route!~\"$url_filter_regex\"}",
           "interval": "",
           "legendFormat": "{{http_route}}",
           "range": true,
@@ -762,7 +762,32 @@
         "uid": "mytempo"
       },
       "fieldConfig": {
-        "defaults": {},
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
         "overrides": []
       },
       "gridPos": {
@@ -772,7 +797,18 @@
         "y": 31
       },
       "id": 26,
-      "options": {},
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "showHeader": true
+      },
       "pluginVersion": "11.4.0",
       "targets": [
         {
@@ -780,15 +816,47 @@
             "type": "tempo",
             "uid": "mytempo"
           },
+          "filters": [
+            {
+              "id": "5578df66",
+              "operator": "=",
+              "scope": "span"
+            },
+            {
+              "id": "span-name",
+              "operator": "=",
+              "scope": "span",
+              "tag": "name",
+              "value": [],
+              "valueType": "string"
+            },
+            {
+              "id": "service-name",
+              "operator": "=",
+              "scope": "resource",
+              "tag": "service.name",
+              "value": [
+                "$app_name"
+              ],
+              "valueType": "string"
+            }
+          ],
+          "groupBy": [
+            {
+              "id": "8dcc5ceb",
+              "scope": "span"
+            }
+          ],
+          "hide": false,
           "limit": 20,
           "query": "$trace_id",
-          "queryType": "traceql",
+          "queryType": "traceqlSearch",
           "refId": "A",
           "tableType": "traces"
         }
       ],
       "title": "Traces",
-      "type": "traces"
+      "type": "table"
     }
   ],
   "preload": false,
@@ -799,9 +867,8 @@
     "list": [
       {
         "current": {
-          "isNone": true,
-          "text": "None",
-          "value": ""
+          "text": "lumbercamp",
+          "value": "lumbercamp"
         },
         "datasource": {
           "type": "prometheus",
@@ -841,21 +908,26 @@
       },
       {
         "current": {
-          "text": "",
-          "value": ""
+          "text": "server",
+          "value": "server"
         },
+        "datasource": {
+          "type": "tempo",
+          "uid": "mytempo"
+        },
+        "definition": "",
         "description": "",
-        "label": "Trace ID",
+        "label": "Span Names",
         "name": "trace_id",
-        "options": [
-          {
-            "selected": true,
-            "text": "",
-            "value": ""
-          }
-        ],
-        "query": "",
-        "type": "textbox"
+        "options": [],
+        "query": {
+          "label": "kind",
+          "refId": "TempoDatasourceVariableQueryEditor-VariableQuery",
+          "type": 1
+        },
+        "refresh": 1,
+        "regex": "",
+        "type": "query"
       }
     ]
   },
@@ -866,7 +938,7 @@
   "timepicker": {},
   "timezone": "",
   "title": "Observability Sample",
-  "uid": "dLsDQIUnzbazzaze",
-  "version": 1,
+  "uid": "aeap3x0fe720wf",
+  "version": 5,
   "weekStart": ""
 }
