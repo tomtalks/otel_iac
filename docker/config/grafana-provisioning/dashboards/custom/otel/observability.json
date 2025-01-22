@@ -1,851 +1,872 @@
 {
-    "annotations": {
-      "list": [
-        {
-          "builtIn": 1,
-          "datasource": {
-            "type": "datasource",
-            "uid": "grafana"
-          },
-          "enable": true,
-          "hide": true,
-          "iconColor": "rgba(0, 211, 255, 1)",
-          "name": "Annotations & Alerts",
-          "target": {
-            "limit": 100,
-            "matchAny": false,
-            "tags": [],
-            "type": "dashboard"
-          },
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "datasource",
+          "uid": "grafana"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
           "type": "dashboard"
-        }
-      ]
-    },
-    "description": "Observe Spring Boot application with three pillars of observability: Traces (Tempo), Metrics (Prometheus), Logs (Loki) on Grafana through OpenTelemetry and OpenMetrics.",
-    "editable": true,
-    "fiscalYearStartMonth": 0,
-    "gnetId": 17175,
-    "graphTooltip": 0,
-    "id": 3,
-    "links": [],
-    "liveNow": false,
-    "panels": [
-      {
-        "collapsed": false,
-        "gridPos": {
-          "h": 1,
-          "w": 24,
-          "x": 0,
-          "y": 0
         },
-        "id": 28,
-        "panels": [],
-        "title": "Metrics",
-        "type": "row"
-      },
-      {
-        "datasource": {
-          "type": "prometheus",
-          "uid": "myprometheus"
-        },
-        "fieldConfig": {
-          "defaults": {
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": null
-                }
-              ]
-            },
-            "unit": "none"
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 3,
-          "w": 4,
-          "x": 0,
-          "y": 1
-        },
-        "id": 4,
-        "options": {
-          "colorMode": "value",
-          "graphMode": "none",
-          "justifyMode": "auto",
-          "orientation": "auto",
-          "reduceOptions": {
-            "calcs": [
-              "range"
-            ],
-            "fields": "",
-            "values": false
-          },
-          "textMode": "auto"
-        },
-        "pluginVersion": "9.5.2",
-        "targets": [
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "myprometheus"
-            },
-            "editorMode": "code",
-            "exemplar": true,
-            "expr": "sum(duration_count{service_name=\"$app_name\", http_status_code=~\".*\", span_kind=~\"$span_kind\", http_route!~\"$url_filter_regex\"})",
-            "interval": "",
-            "legendFormat": "{{span_kind}}",
-            "range": true,
-            "refId": "A"
-          }
-        ],
-        "title": "Total Requests",
-        "type": "stat"
-      },
-      {
-        "datasource": {
-          "type": "prometheus",
-          "uid": "myprometheus"
-        },
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "thresholds"
-            },
-            "mappings": [],
-            "noValue": "0",
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": null
-                },
-                {
-                  "color": "red",
-                  "value": 80
-                }
-              ]
-            },
-            "unit": "none"
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 3,
-          "w": 3,
-          "x": 4,
-          "y": 1
-        },
-        "id": 22,
-        "options": {
-          "colorMode": "value",
-          "graphMode": "none",
-          "justifyMode": "auto",
-          "orientation": "auto",
-          "reduceOptions": {
-            "calcs": [
-              "range"
-            ],
-            "fields": "",
-            "values": false
-          },
-          "textMode": "auto"
-        },
-        "pluginVersion": "9.5.2",
-        "targets": [
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "myprometheus"
-            },
-            "editorMode": "code",
-            "exemplar": true,
-            "expr": "sum(duration_count{service_name=\"$app_name\", http_status_code=~\"2.*\", span_kind=~\"$span_kind\", http_route!~\"$url_filter_regex\"})",
-            "interval": "",
-            "legendFormat": "",
-            "range": true,
-            "refId": "A"
-          }
-        ],
-        "title": "Total 2XX",
-        "type": "stat"
-      },
-      {
-        "datasource": {
-          "type": "prometheus",
-          "uid": "myprometheus"
-        },
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "thresholds"
-            },
-            "mappings": [],
-            "noValue": "0",
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": null
-                },
-                {
-                  "color": "red",
-                  "value": 80
-                }
-              ]
-            },
-            "unit": "none"
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 3,
-          "w": 3,
-          "x": 7,
-          "y": 1
-        },
-        "id": 31,
-        "options": {
-          "colorMode": "value",
-          "graphMode": "area",
-          "justifyMode": "auto",
-          "orientation": "auto",
-          "reduceOptions": {
-            "calcs": [
-              "range"
-            ],
-            "fields": "",
-            "values": false
-          },
-          "textMode": "auto"
-        },
-        "pluginVersion": "9.5.2",
-        "targets": [
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "myprometheus"
-            },
-            "editorMode": "code",
-            "exemplar": true,
-            "expr": "sum(duration_count{service_name=\"$app_name\", http_status_code=~\"3.*\", span_kind=~\"$span_kind\", http_route!~\"$url_filter_regex\"})",
-            "interval": "",
-            "legendFormat": "",
-            "range": true,
-            "refId": "A"
-          }
-        ],
-        "title": "Total Exceptions ( 3XX )",
-        "type": "stat"
-      },
-      {
-        "datasource": {
-          "type": "prometheus",
-          "uid": "myprometheus"
-        },
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "thresholds"
-            },
-            "mappings": [],
-            "noValue": "0",
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": null
-                },
-                {
-                  "color": "red",
-                  "value": 80
-                }
-              ]
-            },
-            "unit": "none"
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 3,
-          "w": 3,
-          "x": 10,
-          "y": 1
-        },
-        "id": 32,
-        "options": {
-          "colorMode": "value",
-          "graphMode": "none",
-          "justifyMode": "auto",
-          "orientation": "auto",
-          "reduceOptions": {
-            "calcs": [
-              "range"
-            ],
-            "fields": "",
-            "values": false
-          },
-          "textMode": "auto"
-        },
-        "pluginVersion": "9.5.2",
-        "targets": [
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "myprometheus"
-            },
-            "editorMode": "code",
-            "exemplar": true,
-            "expr": "sum(duration_count{service_name=\"$app_name\", http_status_code=~\"4.*\", span_kind=~\"$span_kind\", http_route!~\"$url_filter_regex\"})",
-            "interval": "",
-            "legendFormat": "",
-            "range": true,
-            "refId": "A"
-          }
-        ],
-        "title": "Total Exceptions ( 4XX )",
-        "type": "stat"
-      },
-      {
-        "datasource": {
-          "type": "prometheus",
-          "uid": "myprometheus"
-        },
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "thresholds"
-            },
-            "mappings": [],
-            "noValue": "0",
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": null
-                },
-                {
-                  "color": "red",
-                  "value": 80
-                }
-              ]
-            },
-            "unit": "none"
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 3,
-          "w": 3,
-          "x": 13,
-          "y": 1
-        },
-        "id": 33,
-        "options": {
-          "colorMode": "value",
-          "graphMode": "none",
-          "justifyMode": "auto",
-          "orientation": "auto",
-          "reduceOptions": {
-            "calcs": [
-              "range"
-            ],
-            "fields": "",
-            "values": false
-          },
-          "textMode": "auto"
-        },
-        "pluginVersion": "9.5.2",
-        "targets": [
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "myprometheus"
-            },
-            "editorMode": "code",
-            "exemplar": true,
-            "expr": "sum(duration_count{service_name=\"$app_name\", http_status_code=~\"5.*\", span_kind=~\"$span_kind\", http_route!~\"$url_filter_regex\"})",
-            "interval": "",
-            "legendFormat": "",
-            "range": true,
-            "refId": "A"
-          }
-        ],
-        "title": "Total Exceptions ( 5XX )",
-        "type": "stat"
-      },
-      {
-        "datasource": {
-          "type": "prometheus",
-          "uid": "myprometheus"
-        },
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "continuous-GrYlRd"
-            },
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": null
-                },
-                {
-                  "color": "red",
-                  "value": 80
-                }
-              ]
-            },
-            "unit": "ms"
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 9,
-          "w": 12,
-          "x": 0,
-          "y": 4
-        },
-        "id": 6,
-        "options": {
-          "displayMode": "lcd",
-          "minVizHeight": 10,
-          "minVizWidth": 0,
-          "orientation": "horizontal",
-          "reduceOptions": {
-            "calcs": [
-              "range"
-            ],
-            "fields": "",
-            "values": false
-          },
-          "showUnfilled": true,
-          "valueMode": "color"
-        },
-        "pluginVersion": "9.5.2",
-        "targets": [
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "myprometheus"
-            },
-            "editorMode": "code",
-            "exemplar": true,
-            "expr": "sum by(http_route)(duration_sum{service_name=\"$app_name\",span_kind=~\"$span_kind\", http_route!~\"$url_filter_regex\"}) / \r\nsum by(http_route)(duration_count{service_name=\"$app_name\",span_kind=~\"$span_kind\", http_route!~\"$url_filter_regex\"})",
-            "interval": "",
-            "legendFormat": "{{ span_kind}}",
-            "range": true,
-            "refId": "A"
-          }
-        ],
-        "title": "Requests Average Duration",
-        "type": "bargauge"
-      },
-      {
-        "datasource": {
-          "type": "prometheus",
-          "uid": "myprometheus"
-        },
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "fixedColor": "blue",
-              "mode": "fixed"
-            },
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": null
-                }
-              ]
-            },
-            "unit": "none"
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 9,
-          "w": 12,
-          "x": 12,
-          "y": 4
-        },
-        "id": 37,
-        "options": {
-          "displayMode": "lcd",
-          "minVizHeight": 10,
-          "minVizWidth": 0,
-          "orientation": "horizontal",
-          "reduceOptions": {
-            "calcs": [
-              "range"
-            ],
-            "fields": "",
-            "values": false
-          },
-          "showUnfilled": true,
-          "valueMode": "color"
-        },
-        "pluginVersion": "9.5.2",
-        "targets": [
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "myprometheus"
-            },
-            "editorMode": "code",
-            "exemplar": true,
-            "expr": "duration_count{service_name=\"$app_name\",span_kind=~\"$span_kind\", http_route!~\"$url_filter_regex\"}",
-            "interval": "",
-            "legendFormat": "{{ http_route }}",
-            "range": true,
-            "refId": "A"
-          }
-        ],
-        "title": "Number of requests",
-        "type": "bargauge"
-      },
-      {
-        "datasource": {
-          "type": "prometheus",
-          "uid": "myprometheus"
-        },
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "fixedColor": "blue",
-              "mode": "fixed"
-            },
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": null
-                },
-                {
-                  "color": "red",
-                  "value": 80
-                }
-              ]
-            },
-            "unit": "none"
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 9,
-          "w": 12,
-          "x": 0,
-          "y": 13
-        },
-        "id": 24,
-        "options": {
-          "displayMode": "basic",
-          "minVizHeight": 10,
-          "minVizWidth": 0,
-          "orientation": "horizontal",
-          "reduceOptions": {
-            "calcs": [
-              "range"
-            ],
-            "fields": "",
-            "values": false
-          },
-          "showUnfilled": true,
-          "valueMode": "color"
-        },
-        "pluginVersion": "9.5.2",
-        "targets": [
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "myprometheus"
-            },
-            "editorMode": "code",
-            "exemplar": true,
-            "expr": "duration_count{service_name=\"$app_name\", http_status_code=~\"2.*\", span_kind=~\"$span_kind\", http_route!~\"$url_filter_regex\"}",
-            "interval": "",
-            "legendFormat": "{{http_route}}",
-            "range": true,
-            "refId": "A"
-          }
-        ],
-        "title": "Number of 2xx Requests",
-        "type": "bargauge"
-      },
-      {
-        "datasource": {
-          "type": "prometheus",
-          "uid": "myprometheus"
-        },
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "fixedColor": "red",
-              "mode": "fixed"
-            },
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": null
-                },
-                {
-                  "color": "red",
-                  "value": 80
-                }
-              ]
-            },
-            "unit": "none"
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 9,
-          "w": 12,
-          "x": 12,
-          "y": 13
-        },
-        "id": 36,
-        "options": {
-          "displayMode": "basic",
-          "minVizHeight": 10,
-          "minVizWidth": 0,
-          "orientation": "horizontal",
-          "reduceOptions": {
-            "calcs": [
-              "range"
-            ],
-            "fields": "",
-            "values": false
-          },
-          "showUnfilled": true,
-          "valueMode": "color"
-        },
-        "pluginVersion": "9.5.2",
-        "targets": [
-          {
-            "datasource": {
-              "type": "prometheus",
-              "uid": "myprometheus"
-            },
-            "editorMode": "code",
-            "exemplar": true,
-            "expr": "duration_count{service_name=\"$app_name\", http_status_code!~\"2.*\", span_kind=~\"$span_kind\", http_route!~\"$url_filter_regex\"}",
-            "interval": "",
-            "legendFormat": "{{http_route}}",
-            "range": true,
-            "refId": "A"
-          }
-        ],
-        "title": "Number of none 2xx Requests",
-        "type": "bargauge"
-      },
-      {
-        "collapsed": true,
-        "gridPos": {
-          "h": 1,
-          "w": 24,
-          "x": 0,
-          "y": 22
-        },
-        "id": 30,
-        "panels": [
-          {
-            "datasource": {
-              "type": "loki",
-              "uid": "myloki"
-            },
-            "gridPos": {
-              "h": 8,
-              "w": 24,
-              "x": 0,
-              "y": 2
-            },
-            "id": 2,
-            "options": {
-              "dedupStrategy": "exact",
-              "enableLogDetails": true,
-              "prettifyLogMessage": false,
-              "showCommonLabels": false,
-              "showLabels": false,
-              "showTime": true,
-              "sortOrder": "Descending",
-              "wrapLogMessage": false
-            },
-            "pluginVersion": "8.4.3",
-            "targets": [
-              {
-                "datasource": {
-                  "type": "loki",
-                  "uid": "myloki"
-                },
-                "editorMode": "code",
-                "expr": "{application=\"$app_name\"} | json | line_format \"{{.severity}}\\t{{.body}}\"",
-                "hide": false,
-                "queryType": "range",
-                "refId": "A"
-              }
-            ],
-            "title": "Log of All Spring Boot Apps",
-            "type": "logs"
-          },
-          {
-            "datasource": {
-              "type": "tempo",
-              "uid": "mytempo"
-            },
-            "gridPos": {
-              "h": 26,
-              "w": 24,
-              "x": 0,
-              "y": 10
-            },
-            "id": 26,
-            "targets": [
-              {
-                "datasource": {
-                  "type": "tempo",
-                  "uid": "mytempo"
-                },
-                "limit": 20,
-                "query": "$trace_id",
-                "queryType": "traceql",
-                "refId": "A"
-              }
-            ],
-            "title": "Traces",
-            "type": "traces"
-          }
-        ],
-        "title": "Logs / Traces",
-        "type": "row"
+        "type": "dashboard"
       }
-    ],
-    "refresh": "",
-    "revision": 1,
-    "schemaVersion": 38,
-    "style": "dark",
-    "tags": [],
-    "templating": {
-      "list": [
-        {
-          "current": {
-            "isNone": true,
-            "selected": false,
-            "text": "None",
-            "value": ""
+    ]
+  },
+  "description": "Observe Spring Boot application with three pillars of observability: Traces (Tempo), Metrics (Prometheus), Logs (Loki) on Grafana through OpenTelemetry and OpenMetrics.",
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": 2,
+  "links": [],
+  "panels": [
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 28,
+      "panels": [],
+      "title": "Metrics",
+      "type": "row"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "myprometheus"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
           },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 4,
+        "x": 0,
+        "y": 1
+      },
+      "id": 4,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "range"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.4.0",
+      "targets": [
+        {
           "datasource": {
             "type": "prometheus",
             "uid": "myprometheus"
           },
-          "definition": "label_values(duration_count, service_name)",
-          "hide": 0,
-          "includeAll": false,
-          "label": "Application Name",
-          "multi": false,
-          "name": "app_name",
-          "options": [],
-          "query": {
-            "query": "label_values(duration_count, service_name)",
-            "refId": "StandardVariableQuery"
+          "editorMode": "code",
+          "exemplar": true,
+          "expr": "sum(http_server_request_duration_seconds_bucket{service_name=\"$app_name\", http_status_code=~\".*\", http_route!~\"$url_filter_regex\"})",
+          "interval": "",
+          "legendFormat": "{{span_kind}}",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Total Requests",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "myprometheus"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
           },
-          "refresh": 1,
-          "regex": "",
-          "skipUrlSync": false,
-          "sort": 0,
-          "type": "query"
+          "mappings": [],
+          "noValue": "0",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "none"
         },
-        {
-          "current": {
-            "selected": false,
-            "text": "SPAN_KIND_SERVER",
-            "value": "SPAN_KIND_SERVER"
-          },
-          "description": "Regular expression for excluse URL to monitor",
-          "hide": 2,
-          "includeAll": false,
-          "label": "Span Kind",
-          "multi": false,
-          "name": "span_kind",
-          "options": [
-            {
-              "selected": true,
-              "text": "SPAN_KIND_SERVER",
-              "value": "SPAN_KIND_SERVER"
-            }
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 3,
+        "x": 4,
+        "y": 1
+      },
+      "id": 22,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "range"
           ],
-          "query": "SPAN_KIND_SERVER",
-          "skipUrlSync": false,
-          "type": "custom"
+          "fields": "",
+          "values": false
         },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.4.0",
+      "targets": [
         {
-          "current": {
-            "selected": false,
+          "datasource": {
+            "type": "prometheus",
+            "uid": "myprometheus"
+          },
+          "editorMode": "code",
+          "exemplar": true,
+          "expr": "sum(http_server_request_duration_seconds_bucket{service_name=\"$app_name\", http_response_status_code=~\"2.*\", http_route!~\"$url_filter_regex\"})",
+          "interval": "",
+          "legendFormat": "",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Total 2XX",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "myprometheus"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "noValue": "0",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 3,
+        "x": 7,
+        "y": 1
+      },
+      "id": 31,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "range"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.4.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "myprometheus"
+          },
+          "editorMode": "code",
+          "exemplar": true,
+          "expr": "sum(http_server_request_duration_seconds_bucket{service_name=\"$app_name\", http_response_status_code=~\"3.*\", http_route!~\"$url_filter_regex\"})",
+          "interval": "",
+          "legendFormat": "",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Total Exceptions ( 3XX )",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "myprometheus"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "noValue": "0",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 3,
+        "x": 10,
+        "y": 1
+      },
+      "id": 32,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "range"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.4.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "myprometheus"
+          },
+          "editorMode": "code",
+          "exemplar": true,
+          "expr": "sum(http_server_request_duration_seconds_bucket{service_name=\"$app_name\", http_response_status_code=~\"4.*\", http_route!~\"$url_filter_regex\"})",
+          "interval": "",
+          "legendFormat": "",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Total Exceptions ( 4XX )",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "myprometheus"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "noValue": "0",
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 3,
+        "x": 13,
+        "y": 1
+      },
+      "id": 33,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "percentChangeColorMode": "standard",
+        "reduceOptions": {
+          "calcs": [
+            "range"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "11.4.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "myprometheus"
+          },
+          "editorMode": "code",
+          "exemplar": true,
+          "expr": "sum(duration_count{service_name=\"$app_name\", http_response_status_code=~\"5.*\", http_route!~\"$url_filter_regex\"})",
+          "interval": "",
+          "legendFormat": "",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Total Exceptions ( 5XX )",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "myprometheus"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "continuous-GrYlRd"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "ms"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 0,
+        "y": 4
+      },
+      "id": 6,
+      "options": {
+        "displayMode": "lcd",
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "maxVizHeight": 300,
+        "minVizHeight": 10,
+        "minVizWidth": 0,
+        "namePlacement": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "range"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showUnfilled": true,
+        "sizing": "auto",
+        "valueMode": "color"
+      },
+      "pluginVersion": "11.4.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "myprometheus"
+          },
+          "editorMode": "code",
+          "exemplar": true,
+          "expr": "sum by(http_route)(http_server_request_duration_seconds_sum{service_name=\"$app_name\", http_route!~\"$url_filter_regex\"}) / \r\nsum by(http_route)(http_server_request_duration_seconds_count{service_name=\"$app_name\", http_route!~\"$url_filter_regex\"})",
+          "interval": "",
+          "legendFormat": "{{ span_kind}}",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Requests Average Duration",
+      "type": "bargauge"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "myprometheus"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "blue",
+            "mode": "fixed"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 12,
+        "y": 4
+      },
+      "id": 37,
+      "options": {
+        "displayMode": "lcd",
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "maxVizHeight": 300,
+        "minVizHeight": 10,
+        "minVizWidth": 0,
+        "namePlacement": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "range"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showUnfilled": true,
+        "sizing": "auto",
+        "valueMode": "color"
+      },
+      "pluginVersion": "11.4.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "myprometheus"
+          },
+          "editorMode": "code",
+          "exemplar": true,
+          "expr": "http_server_request_duration_seconds_count{service_name=\"$app_name\", http_route!~\"$url_filter_regex\"}",
+          "interval": "",
+          "legendFormat": "{{ http_route }}",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Number of requests",
+      "type": "bargauge"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "myprometheus"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "blue",
+            "mode": "fixed"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 0,
+        "y": 13
+      },
+      "id": 24,
+      "options": {
+        "displayMode": "basic",
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "maxVizHeight": 300,
+        "minVizHeight": 10,
+        "minVizWidth": 0,
+        "namePlacement": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "range"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showUnfilled": true,
+        "sizing": "auto",
+        "valueMode": "color"
+      },
+      "pluginVersion": "11.4.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "myprometheus"
+          },
+          "editorMode": "code",
+          "exemplar": true,
+          "expr": "duration_count{service_name=\"$app_name\", http_status_code=~\"2.*\", span_kind=~\"$span_kind\", http_route!~\"$url_filter_regex\"}",
+          "interval": "",
+          "legendFormat": "{{http_route}}",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Number of 2xx Requests",
+      "type": "bargauge"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "myprometheus"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "fixedColor": "red",
+            "mode": "fixed"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 12,
+        "y": 13
+      },
+      "id": 36,
+      "options": {
+        "displayMode": "basic",
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "maxVizHeight": 300,
+        "minVizHeight": 10,
+        "minVizWidth": 0,
+        "namePlacement": "auto",
+        "orientation": "horizontal",
+        "reduceOptions": {
+          "calcs": [
+            "range"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showUnfilled": true,
+        "sizing": "auto",
+        "valueMode": "color"
+      },
+      "pluginVersion": "11.4.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "myprometheus"
+          },
+          "editorMode": "code",
+          "exemplar": true,
+          "expr": "duration_count{service_name=\"$app_name\", http_status_code!~\"2.*\", span_kind=~\"$span_kind\", http_route!~\"$url_filter_regex\"}",
+          "interval": "",
+          "legendFormat": "{{http_route}}",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Number of none 2xx Requests",
+      "type": "bargauge"
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 22
+      },
+      "id": 30,
+      "panels": [],
+      "title": "Logs / Traces",
+      "type": "row"
+    },
+    {
+      "datasource": {
+        "type": "loki",
+        "uid": "myloki"
+      },
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 24,
+        "x": 0,
+        "y": 23
+      },
+      "id": 2,
+      "options": {
+        "dedupStrategy": "exact",
+        "enableLogDetails": true,
+        "prettifyLogMessage": false,
+        "showCommonLabels": false,
+        "showLabels": false,
+        "showTime": true,
+        "sortOrder": "Descending",
+        "wrapLogMessage": false
+      },
+      "pluginVersion": "11.4.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "loki",
+            "uid": "myloki"
+          },
+          "editorMode": "code",
+          "expr": "{application=\"$app_name\"} | json | line_format \"{{.severity}}\\t{{.body}}\"",
+          "hide": false,
+          "queryType": "range",
+          "refId": "A"
+        }
+      ],
+      "title": "Log of All Spring Boot Apps",
+      "type": "logs"
+    },
+    {
+      "datasource": {
+        "type": "tempo",
+        "uid": "mytempo"
+      },
+      "fieldConfig": {
+        "defaults": {},
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 26,
+        "w": 24,
+        "x": 0,
+        "y": 31
+      },
+      "id": 26,
+      "options": {},
+      "pluginVersion": "11.4.0",
+      "targets": [
+        {
+          "datasource": {
+            "type": "tempo",
+            "uid": "mytempo"
+          },
+          "limit": 20,
+          "query": "$trace_id",
+          "queryType": "traceql",
+          "refId": "A",
+          "tableType": "traces"
+        }
+      ],
+      "title": "Traces",
+      "type": "traces"
+    }
+  ],
+  "preload": false,
+  "refresh": "",
+  "schemaVersion": 40,
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "current": {
+          "isNone": true,
+          "text": "None",
+          "value": ""
+        },
+        "datasource": {
+          "type": "prometheus",
+          "uid": "myprometheus"
+        },
+        "definition": "label_values(jvm_cpu_count,service_name)",
+        "includeAll": false,
+        "label": "Application Name",
+        "name": "app_name",
+        "options": [],
+        "query": {
+          "qryType": 1,
+          "query": "label_values(jvm_cpu_count,service_name)",
+          "refId": "PrometheusVariableQueryEditor-VariableQuery"
+        },
+        "refresh": 1,
+        "regex": "",
+        "type": "query"
+      },
+      {
+        "current": {
+          "text": "/management/health|/management/info",
+          "value": "/management/health|/management/info"
+        },
+        "description": "Regular expression for excluse URL to monitor",
+        "label": "URL Filter Regex",
+        "name": "url_filter_regex",
+        "options": [
+          {
+            "selected": true,
             "text": "/management/health|/management/info",
             "value": "/management/health|/management/info"
-          },
-          "description": "Regular expression for excluse URL to monitor",
-          "hide": 0,
-          "label": "URL Filter Regex",
-          "name": "url_filter_regex",
-          "options": [
-            {
-              "selected": true,
-              "text": "/management/health|/management/info",
-              "value": "/management/health|/management/info"
-            }
-          ],
-          "query": "/management/health|/management/info",
-          "skipUrlSync": false,
-          "type": "textbox"
+          }
+        ],
+        "query": "/management/health|/management/info",
+        "type": "textbox"
+      },
+      {
+        "current": {
+          "text": "",
+          "value": ""
         },
-        {
-          "current": {
-            "selected": false,
+        "description": "",
+        "label": "Trace ID",
+        "name": "trace_id",
+        "options": [
+          {
+            "selected": true,
             "text": "",
             "value": ""
-          },
-          "description": "",
-          "hide": 0,
-          "label": "Trace ID",
-          "name": "trace_id",
-          "options": [
-            {
-              "selected": true,
-              "text": "",
-              "value": ""
-            }
-          ],
-          "query": "",
-          "skipUrlSync": false,
-          "type": "textbox"
-        }
-      ]
-    },
-    "time": {
-      "from": "now-30m",
-      "to": "now"
-    },
-    "timepicker": {},
-    "timezone": "",
-    "title": "Observability Sample",
-    "uid": "dLsDQIUnzbazzaze",
-    "version": 1,
-    "weekStart": ""
-  }
+          }
+        ],
+        "query": "",
+        "type": "textbox"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-30m",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "Observability Sample",
+  "uid": "dLsDQIUnzbazzaze",
+  "version": 1,
+  "weekStart": ""
+}
