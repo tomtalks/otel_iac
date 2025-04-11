@@ -100,6 +100,7 @@ services:
     container_name: postgres
     volumes:
       - pg_data:/var/lib/postgresql/data
+      - ./config/init-readonly-user.sql:/docker-entrypoint-initdb.d/init-readonly-user.sql
     ports:
       - "5432:5432"
     environment:
