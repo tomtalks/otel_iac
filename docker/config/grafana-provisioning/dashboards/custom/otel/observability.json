@@ -1,22 +1,6 @@
 {
   "__inputs": [
     {
-      "name": "DS_PROMETHEUS",
-      "label": "prometheus",
-      "description": "",
-      "type": "datasource",
-      "pluginId": "prometheus",
-      "pluginName": "Prometheus"
-    },
-    {
-      "name": "DS_LOKI",
-      "label": "loki",
-      "description": "",
-      "type": "datasource",
-      "pluginId": "loki",
-      "pluginName": "Loki"
-    },
-    {
       "name": "DS_TEMPO",
       "label": "tempo",
       "description": "",
@@ -121,7 +105,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "myprometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -168,7 +152,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "myprometheus"
           },
           "editorMode": "code",
           "exemplar": true,
@@ -185,7 +169,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "myprometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -236,7 +220,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "myprometheus"
           },
           "editorMode": "code",
           "exemplar": true,
@@ -253,7 +237,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "myprometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -308,7 +292,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "myprometheus"
           },
           "editorMode": "code",
           "exemplar": true,
@@ -325,7 +309,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "myprometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -380,7 +364,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "myprometheus"
           },
           "editorMode": "code",
           "exemplar": true,
@@ -397,7 +381,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "myprometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -452,7 +436,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "myprometheus"
           },
           "editorMode": "code",
           "exemplar": true,
@@ -469,7 +453,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "myprometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -530,7 +514,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "myprometheus"
           },
           "editorMode": "code",
           "exemplar": true,
@@ -547,7 +531,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "myprometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -605,7 +589,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "myprometheus"
           },
           "editorMode": "code",
           "exemplar": true,
@@ -622,7 +606,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "myprometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -684,7 +668,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "myprometheus"
           },
           "editorMode": "code",
           "exemplar": true,
@@ -701,7 +685,7 @@
     {
       "datasource": {
         "type": "prometheus",
-        "uid": "${DS_PROMETHEUS}"
+        "uid": "myprometheus"
       },
       "fieldConfig": {
         "defaults": {
@@ -763,7 +747,7 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "myprometheus"
           },
           "editorMode": "code",
           "exemplar": true,
@@ -793,7 +777,7 @@
     {
       "datasource": {
         "type": "loki",
-        "uid": "${DS_LOKI}"
+        "uid": "myloki"
       },
       "gridPos": {
         "h": 8,
@@ -817,7 +801,7 @@
         {
           "datasource": {
             "type": "loki",
-            "uid": "${DS_LOKI}"
+            "uid": "myloki"
           },
           "editorMode": "code",
           "expr": "{application=\"$app_name\"} | json | line_format \"{{.severity}}\\t{{.body}}\"",
@@ -832,7 +816,7 @@
     {
       "datasource": {
         "type": "tempo",
-        "uid": "${DS_TEMPO}"
+        "uid": "tempo"
       },
       "fieldConfig": {
         "defaults": {
@@ -887,7 +871,7 @@
         {
           "datasource": {
             "type": "tempo",
-            "uid": "${DS_TEMPO}"
+            "uid": "tempo"
           },
           "filters": [
             {
@@ -935,7 +919,7 @@
     {
       "datasource": {
         "type": "tempo",
-        "uid": "${DS_TEMPO}"
+        "uid": "tempo"
       },
       "fieldConfig": {
         "defaults": {
@@ -990,7 +974,7 @@
         {
           "datasource": {
             "type": "tempo",
-            "uid": "${DS_TEMPO}"
+            "uid": "tempo"
           },
           "filters": [
             {
@@ -1046,7 +1030,7 @@
         "current": {},
         "datasource": {
           "type": "prometheus",
-          "uid": "${DS_PROMETHEUS}"
+          "uid": "myprometheus"
         },
         "definition": "label_values(http_server_request_duration_seconds_sum,service_name)",
         "includeAll": false,
@@ -1084,7 +1068,7 @@
         "current": {},
         "datasource": {
           "type": "tempo",
-          "uid": "${DS_TEMPO}"
+          "uid": "tempo"
         },
         "definition": "",
         "description": "",

@@ -32,3 +32,13 @@ datasources:
           url: "$${__value.raw}"
           datasourceUid: mytempo
 
+  - name: postgresql
+    uid: postgresql
+    type: postgres
+    url: postgres:5432
+    user: john
+    secureJsonData:
+      password: viewer
+    database: jack
+    jsonData:
+      sslmode: disable  
