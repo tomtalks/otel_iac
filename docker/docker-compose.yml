@@ -86,7 +86,7 @@ services:
       GF_AUTH_DISABLE_LOGIN_FORM: "false"
       GF_PATHS_PROVISIONING: "/etc/grafana/provisioning"
       GF_FEATURE_TOGGLES_ENABLE: traceqlEditor metricsSummary
-      GF_INSTALL_PLUGINS: novatec-sdg-panel yesoreyeram-infinity-datasource
+      GF_INSTALL_PLUGINS: novatec-sdg-panel
     depends_on:
       - prometheus
       - loki
