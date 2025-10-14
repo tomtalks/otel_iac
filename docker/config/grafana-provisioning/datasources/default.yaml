@@ -37,6 +37,7 @@ datasources:
     type: postgres
     url: postgres:5432
     user: john
+    isDefault: true
     secureJsonData:
       password: viewer
     database: jack
